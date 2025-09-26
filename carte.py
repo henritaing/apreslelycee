@@ -68,6 +68,7 @@ if not df_filtre.empty:
         hover_data={
             "Commune de l’établissement": True,
             "Capacité de l’établissement par formation": True,
+            "Filière de formation": True,
             "lat": False,
             "lon": False,
         },
