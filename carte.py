@@ -15,35 +15,72 @@ df["Type_parcours"] = df["Filière de formation"].str.split("-").str[0].str.stri
 
 # Mapping domaine <-> mots-clés
 domaine_mapping = {
-    "Art / Audiovisuel / Animation / Design": ["art", "arts plastiques", "design", "beaux-arts", "école d'art", "arts appliqués", "audiovisuel", "cinéma", "télévision", "animation", "3d", "cinéma d’animation", "illustration", "graphisme"],
-    "Droit et sciences politiques": ["droit", "science politique", "juridique", "Instituts d'études politiques", "iep", "institut d'études politiques", "sciences po"],
-    "Commerce, économie et gestion": ["économie", "gestion", "commerce", "finance", "management", "economie", "economique", "économique", "administration", "école de commerce", "business school", "commerce", "vente", "ECG", "commercialisation", "comptabilité", "expertise comptable", "dgc"],
-    "Philosophie, lettres et langues": ["lettres", "langues", "littérature", "linguistique", "anglais", "espagnol", "langage", "philosophie", "littéraire", "littéraires"],
-    "Sciences humaines et sociales": ["sociologie", "anthropologie", "sciences sociales", "histoire", "géographie"],
-    "Agriculture": ["agricole", "nature", "agricoles"],
-    "Sciences": ["math", "physique", "chimie", "informatique", "biologie", "sciences de la vie", "sciences de la terre", "electronique", "électronique", "MP2I", "PCSI", "MPSI", "PTSI", "CPGE - TB", "TSI", "BCPST", "science des données", "réseaux et télécommunications", "réseaux", "informatique"],
-    "Psychologie": ["psychologie", "psycho"],
-    "Santé": ["médecine", "infirmier", "kiné", "orthophoniste", "orthoptiste", "sage-femme", "ergothérapeute", "santé", "Imagerie médicale et radiologie thérapeutique"],
-    "Enseignement": ["professeur", "enseignement", "éducation", "pppe", "éducateur", "Educateur", "professorat", "Sciences de l'éducation et de la formation", "éducation"],
-    "Architecture": ["architecture", "architecte"],
-    "Communication": ["communication", "publicité", "relations publiques"],
-    "écoles de la Défense": ["défense", "armée"],
-    "écoles de gendarmerie": ["gendarmerie"],
-    "écoles du jeu vidéo": ["jeu vidéo", "game", "gaming"],
-    "Ingénierie": ["ingénierie", "école d'ingénieur", "ingénieur", "génie"],
-    "écoles de journalisme": ["journalisme", "journaliste"],
-    "écoles de police": ["police"],
-    "Paramédical": ["audioprothésiste", "manipulateur", "podologue", "laboratoire médical", "secrétariat médical", "Diététique"],
-    "Social": ["assistant de service social", "éducateur", "animation sociale", "assistance sociale", "Economie sociale familiale", "carrières sociales"],
-    "ENS (écoles normales supérieures)": ["ens"],
-    "écoles vétérinaires": ["vétérinaire"],
-    "Sport": ["staps", "sport", "activité physique", "éducateur sportif", "sportif"],
-    "Mode": ["mode"],
-    "Services": ["tourisme", "hôtellerie", "restauration", "hospitalité", "événement", "accueil", "service", "services"],
-    "Musique": ["musicologie", "musique"],
-    "Artisanat": ["matériaux", "bois", "métal"],
-    "Technique / Production": ["conception", "maintenance", "production", "processus", "technique", "techniques"]
+    "Agriculture, animaux": [
+        "agricole", "agricoles", "nature", "animaux", "élevage", "vétérinaire"
+    ],
+    "Armée, sécurité": [
+        "défense", "armée", "gendarmerie", "police", "sécurité"
+    ],
+    "Arts, culture, artisanat": [
+        "art", "arts plastiques", "beaux-arts", "arts appliqués", "design", "musique", "musicologie",
+        "cinéma", "audiovisuel", "télévision", "animation", "3d", "illustration", "graphisme",
+        "artisanat", "matériaux", "bois", "métal"
+    ],
+    "Banque, assurances, immobilier": [
+        "banque", "assurance", "immobilier", "finance", "commerce", "gestion", "économie", "administration"
+    ],
+    "Commerce, marketing, vente": [
+        "commerce", "marketing", "vente", "business school", "management", "commercialisation", "ECG"
+    ],
+    "Construction, architecture, travaux publics": [
+        "architecture", "architecte", "construction", "bâtiment", "travaux publics", "ingénierie", "génie civil"
+    ],
+    "Économie, droit, politique": [
+        "droit", "science politique", "juridique", "sciences po", "institut d'études politiques", "iep", "politique", "économie", "gestion"
+    ],
+    "Électricité, électronique, robotique": [
+        "électricité", "électronique", "robotique", "electronique"
+    ],
+    "Environnement, énergies, propreté": [
+        "environnement", "énergies", "propreté", "sciences de la terre", "sciences de la vie", "nature", "agroalimentaire"
+    ],
+    "Gestion des entreprises, comptabilité": [
+        "gestion", "comptabilité", "expertise comptable", "administration", "management", "finance"
+    ],
+    "Histoire-géographie, psychologie, sociologie": [
+        "histoire", "géographie", "psychologie", "psycho", "sociologie", "anthropologie", "sciences sociales"
+    ],
+    "Hôtellerie-restauration, tourisme": [
+        "tourisme", "hôtellerie", "restauration", "hospitalité", "événement", "accueil", "service", "services"
+    ],
+    "Information-communication, audiovisuel": [
+        "communication", "publicité", "relations publiques", "journalisme", "journaliste", "audiovisuel", "cinéma", "télévision", "animation"
+    ],
+    "Informatique, Internet": [
+        "informatique", "internet", "réseaux", "réseaux et télécommunications", "science des données", "programmation"
+    ],
+    "Lettres, langues, enseignement": [
+        "lettres", "langues", "littérature", "linguistique", "anglais", "espagnol", "philosophie", "enseignement", "professeur", "éducation", "Sciences de l'éducation"
+    ],
+    "Logistique, transport": [
+        "logistique", "transport", "conduite", "mobilité", "supply chain"
+    ],
+    "Matières premières, fabrication, industries": [
+        "conception", "production", "processus", "technique", "techniques", "industrie", "matériaux"
+    ],
+    "Mécanique": [
+        "mécanique", "maintenance", "automobile", "équipements", "machines"
+    ],
+    "Santé, social, sport": [
+        "médecine", "infirmier", "kiné", "orthophoniste", "orthoptiste", "sage-femme", "ergothérapeute", "santé",
+        "assistant de service social", "éducateur", "animation sociale", "assistance sociale", "carrières sociales",
+        "staps", "sport", "activité physique", "éducateur sportif", "sportif"
+    ],
+    "Sciences": [
+        "math", "physique", "chimie", "biologie", "sciences de la vie", "sciences de la terre", "scientifique", "sciences fondamentales", "MP2I", "PCSI", "MPSI", "PTSI", "TSI"
+    ]
 }
+
 
 def detect_domaine(filiere):
     for domaine, keywords in domaine_mapping.items():
