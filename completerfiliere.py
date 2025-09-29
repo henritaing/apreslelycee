@@ -24,10 +24,10 @@ domaines = list([
     "écoles de journalisme",
     "écoles de police",
     "Paramédical",
-    "écoles du social",
+    "Social",
     "ENS (écoles normales supérieures)",
     "écoles vétérinaires",
-    "formations en sport",
+    "Sport",
     "Agriculture",
     "Services",
     "Mode",
@@ -49,7 +49,7 @@ domaine_mapping = {
     "Philosophie, lettres et langues": ["lettres", "langues", "littérature", "linguistique", "anglais", "espagnol", "langage", "philosophie", "littéraire", "littéraires"],
     "Sciences humaines et sociales": ["sociologie", "anthropologie", "sciences sociales", "histoire", "géographie"],
     "Agriculture": ["agricole", "nature", "agricoles"],
-    "Sciences": ["math", "physique", "chimie", "informatique", "biologie", "sciences de la vie", "sciences de la terre", "electronique", "électronique", "MP2I", "PCSI", "MPSI", "PTSI", "CPGE - TB", "TSI", "BCPST", "science des données", "réseaux et télécommunications"],
+    "Sciences": ["math", "physique", "chimie", "informatique", "biologie", "sciences de la vie", "sciences de la terre", "electronique", "électronique", "MP2I", "PCSI", "MPSI", "PTSI", "CPGE - TB", "TSI", "BCPST", "science des données", "réseaux et télécommunications", "réseaux", "informatique"],
     "Psychologie": ["psychologie", "psycho"],
     "Santé": ["médecine", "infirmier", "kiné", "orthophoniste", "orthoptiste", "sage-femme", "ergothérapeute", "santé", "Imagerie médicale et radiologie thérapeutique"],
     "Enseignement": ["professeur", "enseignement", "éducation", "pppe", "éducateur", "Educateur", "professorat", "Sciences de l'éducation et de la formation", "éducation"],
@@ -62,15 +62,15 @@ domaine_mapping = {
     "écoles de journalisme": ["journalisme", "journaliste"],
     "écoles de police": ["police"],
     "Paramédical": ["audioprothésiste", "manipulateur", "podologue", "laboratoire médical", "secrétariat médical", "Diététique"],
-    "écoles du social": ["assistant de service social", "éducateur", "animation sociale", "assistance sociale", "Economie sociale familiale"],
+    "Social": ["assistant de service social", "éducateur", "animation sociale", "assistance sociale", "Economie sociale familiale", "carrières sociales"],
     "ENS (écoles normales supérieures)": ["ens"],
     "écoles vétérinaires": ["vétérinaire"],
-    "formations en sport": ["staps", "sport", "activité physique", "éducateur sportif", "sportif"],
+    "Sport": ["staps", "sport", "activité physique", "éducateur sportif", "sportif"],
     "Mode": ["mode"],
-    "Services": ["tourisme", "hôtellerie", "restauration", "hospitalité", "événement", "accueil"],
+    "Services": ["tourisme", "hôtellerie", "restauration", "hospitalité", "événement", "accueil", "service", "services"],
     "Musique": ["musicologie", "musique"],
     "Artisanat": ["matériaux", "bois", "métal"],
-    "Technique / Production": ["conception", "maintenance", "production", "processus"]
+    "Technique / Production": ["conception", "maintenance", "production", "processus", "technique", "techniques"]
 }
 
 # Fonction pour prédire le domaine
