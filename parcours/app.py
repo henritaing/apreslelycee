@@ -1,6 +1,6 @@
 import streamlit as st
 from db import SessionLocal
-from models import Formation, Metier
+from models import Formation, Metier, Domaine
 
 st.set_page_config(page_title="Orientation", layout="wide")
 
@@ -9,12 +9,18 @@ st.title("🎓 Explorer les parcours Formations ↔ Métiers")
 session = SessionLocal()
 
 # Choix utilisateur
-mode = st.radio("Voulez-vous partir d’une formation ou d’un métier ?", ["Formation → Métiers", "Métier → Formations"])
+# app.py (nouveau mode)
+mode = st.radio("Explorer par :", ["Métier → Formations", "Domaine → Formations → Métiers"])
 
-if mode == "Formation → Métiers":
-    formations = session.query(Formation).all()
-    choix = st.selectbox("Choisissez une formation :", [f"{f.id} - {f.libelle}" for f in formations])
-    formation_id = choix.split(" - ")[0]
+if mode == "Domaine → Formations → Métiers":
+    domaines = session.query(Domaine).all()
+    choix_domaine = st.selectbox("Choisissez un domaine :", [f"{d.id} - {d.libelle}" for d in domaines])
+    domaine_id = choix_domaine.split(" - ")[0]
+    domaine = session.get(Domaine, domaine_id)
+
+    formations = domaine.formations
+    choix_formation = st.selectbox("Choisissez une formation :", [f"{f.id} - {f.libelle}" for f in formations])
+    formation_id = choix_formation.split(" - ")[0]
     formation = session.get(Formation, formation_id)
 
     st.subheader(f"📚 {formation.libelle} ({formation.niveau})")

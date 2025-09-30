@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 from db import init_db, SessionLocal
-from models import Formation, Metier
+from models import Formation, Metier, Domaine
 
 def parse_and_insert(xml_path="data/formations.xml"):
     init_db()
@@ -16,7 +16,16 @@ def parse_and_insert(xml_path="data/formations.xml"):
             niveau=formation.findtext("niveau_etudes/libelle"),
             url=formation.findtext("url")
         )
-
+        
+        # Domaines
+        for domaine_xml in formation.findall("sous_domaines_web/sous_domaine_web"):
+            d_id = domaine_xml.findtext("id")
+            domaine = session.get(Domaine, d_id)
+            if not domaine:
+                domaine = Domaine(id=d_id, libelle=domaine_xml.findtext("libelle"))
+            f.domaines.append(domaine)
+       
+        # Métiers
         for metier_xml in formation.findall("metiers_formation/metier"):
             m_id = metier_xml.findtext("id")
             metier = session.get(Metier, m_id)
